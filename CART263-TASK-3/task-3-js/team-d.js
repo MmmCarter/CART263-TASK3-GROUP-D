@@ -105,6 +105,34 @@ function setup_D() {
    * **/
   function aniD(parentCanvas) {
     console.log("in ani-D -teamD");
-  }
+   let ellipseX = 0;
+   let ellipseY = 100;
 
+   function animate() {
+     //clear the canvas
+     parentCanvas.innerHTML = "";
+     //create a new div to represent the ellipse
+     let ellipseDiv = document.createElement("div");
+     ellipseDiv.style.position = "absolute";
+     ellipseDiv.style.width = "50px";
+     ellipseDiv.style.height = "50px";
+     ellipseDiv.style.borderRadius = "50%";
+     ellipseDiv.style.backgroundColor = "blue";
+     ellipseDiv.style.left = ellipseX + "px";
+     ellipseDiv.style.top = ellipseY + "px";
+     parentCanvas.appendChild(ellipseDiv);
+
+     //update position for next frame
+     ellipseX += 5;
+     if (ellipseX > parentCanvas.clientWidth) {
+       ellipseX = 0; //reset to start
+     }
+
+     //request next frame
+     requestAnimationFrame(animate);
+   }
+
+   //start the animation
+   animate(); 
+  }
 }
