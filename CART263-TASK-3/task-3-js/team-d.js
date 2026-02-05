@@ -112,8 +112,15 @@ function setup_D() {
    * **/
   function aniD(parentCanvas) {
     console.log("in ani-D -teamD");
-   let ellipseX = 0;
-   let ellipseY = 100;
+   let ellipses = [];
+
+   for (let i = 0; i < 10; i++) {
+    ellipses.push({
+      x: Math.random() * parentCanvas.clientWidth,
+      y: 50 + i * 40,
+      speed: 2 + Math.random() * 3
+    });
+  }
 
    function animate() {
      //clear the canvas
@@ -125,15 +132,17 @@ function setup_D() {
      ellipseDiv.style.height = "50px";
      ellipseDiv.style.borderRadius = "50%";
      ellipseDiv.style.backgroundColor = "blue";
-     ellipseDiv.style.left = ellipseX + "px";
-     ellipseDiv.style.top = ellipseY + "px";
+     ellipseDiv.style.left = ellipse.x + "px";
+     ellipseDiv.style.top = ellipse.y + "px";
      parentCanvas.appendChild(ellipseDiv);
 
      //update position for next frame
-     ellipseX += 5;
-     if (ellipseX > parentCanvas.clientWidth) {
-       ellipseX = 0; //reset to start
-     }
+      ellipse.x += ellipse.speed;
+
+      if (ellipse.x > parentCanvas.clientWidth) {
+        ellipse.x = -50; // reset off screen
+      }
+    };
 
      //request next frame
      requestAnimationFrame(animate);
@@ -142,4 +151,3 @@ function setup_D() {
    //start the animation
    animate(); 
   }
-}
