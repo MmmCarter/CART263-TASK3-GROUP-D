@@ -45,7 +45,6 @@ function setup_D() {
 
   function aniB(parentCanvas) {
     console.log("in ani-B -teamD");
-    dhashdhah
 
   }
   /****************ANI C ************************************ */
