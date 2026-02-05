@@ -126,6 +126,7 @@ function setup_D() {
      //clear the canvas
      parentCanvas.innerHTML = "";
      //create a new div to represent the ellipse
+      ellipses.forEach((ellipse) => {
      let ellipseDiv = document.createElement("div");
      ellipseDiv.style.position = "absolute";
      ellipseDiv.style.width = "50px";
@@ -142,7 +143,7 @@ function setup_D() {
       if (ellipse.x > parentCanvas.clientWidth) {
         ellipse.x = -50; // reset off screen
       }
-    };
+    });
 
      //request next frame
      requestAnimationFrame(animate);
@@ -151,3 +152,4 @@ function setup_D() {
    //start the animation
    animate(); 
   }
+}
