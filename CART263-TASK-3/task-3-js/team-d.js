@@ -24,8 +24,16 @@ function setup_D() {
    
   function aniA(parentCanvas) {
     console.log("in ani-A -teamD");
-  }
+    const canvas = document.getElementById(parentCanvas);
 
+    canvas.innerHTML = "";
+
+    canvas.style.position = "relative";
+    canvas.style.width = "100%";
+    canvas.style.height = "300px";
+    canvas.style.background = "#111";
+    canvas.style.overflow = "hidden";
+  }
 
   /****************ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN B INSIDE HERE */
