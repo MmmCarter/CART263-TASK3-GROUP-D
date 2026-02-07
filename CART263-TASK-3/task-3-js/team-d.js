@@ -116,7 +116,7 @@ function setup_D() {
 
    for (let i = 0; i < 10; i++) {
     ellipses.push({
-      x: Math.random() * parentCanvas.clientWidth,
+      x: Math.random() * (parentCanvas.clientWidth - 50),
       y: 50 + i * 40,
       speed: 2 + Math.random() * 3
     });
@@ -140,7 +140,7 @@ function setup_D() {
      //update position for next frame
       ellipse.x += ellipse.speed;
 
-      if (ellipse.x > parentCanvas.clientWidth) {
+      if  (ellipse.x + 50 > parentCanvas.clientWidth) {
         ellipse.x = -50; // reset off screen
       }
     });
