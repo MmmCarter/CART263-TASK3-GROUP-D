@@ -132,7 +132,7 @@ function setup_D() {
      ellipseDiv.style.width = "50px";
      ellipseDiv.style.height = "50px";
      ellipseDiv.style.borderRadius = "50%";
-     ellipseDiv.style.backgroundColor = "blue";
+     ellipseDiv.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
      ellipseDiv.style.left = ellipse.x + "px";
      ellipseDiv.style.top = ellipse.y + "px";
      parentCanvas.appendChild(ellipseDiv);
