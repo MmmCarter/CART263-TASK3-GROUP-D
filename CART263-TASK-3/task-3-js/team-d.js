@@ -115,7 +115,7 @@ function setup_D() {
    parentCanvas.style.position = "relative";
    let ellipses = [];
 
-   for (let i = 0; i < 5; i++) {
+   for (let i = 0; i < 10; i++) {
     ellipses.push({
       x: Math.random() * (parentCanvas.clientWidth - 50),
       y: Math.random() * (parentCanvas.clientHeight - 50),
