@@ -114,11 +114,11 @@ function setup_D() {
     console.log("in ani-D -teamD");
    let ellipses = [];
 
-   for (let i = 0; i < 10; i++) {
+   for (let i = 0; i < 5; i++) {
     ellipses.push({
-      x: Math.random() * (parentCanvas.clientWidth - 50),
-      y: 50 + i * 40,
-      speed: 2 + Math.random() * 3
+      x: Math.random() * (parentCanvas.clientWidth - 40),
+      y: Math.random() * (parentCanvas.clientHeight - 40),
+      speed: 2 + Math.random() * 1
     });
   }
 
