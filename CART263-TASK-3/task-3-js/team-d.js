@@ -112,12 +112,13 @@ function setup_D() {
    * **/
   function aniD(parentCanvas) {
     console.log("in ani-D -teamD");
+   parentCanvas.style.position = "relative";
    let ellipses = [];
 
    for (let i = 0; i < 5; i++) {
     ellipses.push({
-      x: Math.random() * (parentCanvas.clientWidth - 40),
-      y: Math.random() * (parentCanvas.clientHeight - 40),
+      x: Math.random() * (parentCanvas.clientWidth - 50),
+      y: Math.random() * (parentCanvas.clientHeight - 50),
       speed: 1 + Math.random() * 2
     });
   }
@@ -141,7 +142,7 @@ function setup_D() {
       ellipse.x += ellipse.speed;
 
       if  (ellipse.x + 50 > parentCanvas.clientWidth) {
-        ellipse.x = -50; // reset off screen
+        ellipse.x = 0; // reset off screen
       }
     });
 
