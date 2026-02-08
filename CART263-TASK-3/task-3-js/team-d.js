@@ -118,7 +118,7 @@ function setup_D() {
     ellipses.push({
       x: Math.random() * (parentCanvas.clientWidth - 40),
       y: Math.random() * (parentCanvas.clientHeight - 40),
-      speed: 2 + Math.random() * 1
+      speed: 1 + Math.random() * 2
     });
   }
 
