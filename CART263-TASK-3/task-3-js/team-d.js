@@ -71,9 +71,12 @@ function setup_D() {
         cell.style.position = "absolute";
         cell.style.left = x + "px";
         cell.style.top = y + "px";
-        cell.style.width = cellSize + "px";
-        cell.style.height = cellSize + "px";
+        cell.style.width = cellSize - 2 + "px";
+        cell.style.height = cellSize - 2 + "px";
         cell.style.background = "rgba(200, 200, 200, 0.3)";
+
+        //gradient effect for color change
+        cell.style.transition = "background 0.8s linear";
 
         //mouseover event to change color
         cell.addEventListener("mouseover", () => {
@@ -82,6 +85,11 @@ function setup_D() {
           const color = `hsl(${hue}, 80%, 60%)`;
           cell.style.background = color;
           hue = (hue + 20) % 360;
+
+          //fade back to original color after a short delay
+          setTimeout(() => {
+            cell.style.background = "rgba(200, 200, 200, 0.3)";
+          }, 600);//600ms delay
         });
 
         parentCanvas.appendChild(cell);
