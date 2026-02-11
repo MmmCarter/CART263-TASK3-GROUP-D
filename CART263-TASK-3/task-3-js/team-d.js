@@ -75,6 +75,15 @@ function setup_D() {
         cell.style.height = cellSize + "px";
         cell.style.background = "rgba(200, 200, 200, 0.3)";
 
+        //mouseover event to change color
+        cell.addEventListener("mouseover", () => {
+
+          //change color to a random hue
+          const color = `hsl(${hue}, 80%, 60%)`;
+          cell.style.background = color;
+          hue = (hue + 20) % 360;
+        });
+
         parentCanvas.appendChild(cell);
       }
     }
