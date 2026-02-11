@@ -151,7 +151,24 @@ function setup_D() {
     windowKeyDownRef = function (e) {
       //code for key down in here
       console.log(e);
-      console.log("d-down");
+      console.log("d-down", e.code);
+
+      //generate blocks when we press space
+      if (e.code === "Space") {
+        // prevent page scrolling
+        e.preventDefault();
+
+        //if not generating yet, satrt interval
+        if (!spawnInterval) {
+          spawnInterval = setInterval(createBlock, 120);
+        }
+      }
+
+      //clear blocks when we press backspace
+      if (e.code === "Backspace") {
+        const blocks = parentCanvas.querySelectorAll("div");
+        blocks.forEach((b) => b.remove());
+      }
     };
 
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
