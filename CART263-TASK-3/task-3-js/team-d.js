@@ -54,6 +54,30 @@ function setup_D() {
   function aniB(parentCanvas) {
     console.log("in ani-B -teamD");
 
+    //get the rendered bounding Box of parent and use the width and height
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    console.log(boundingBoxParent);
+
+    const cellSize = 20;
+
+    //hue values to generate different colors
+    let hue = 0;
+
+    //make a grid of cells
+    for (let x = 0; x < boundingBoxParent.width; x += cellSize) {
+      for (let y = 0; y < boundingBoxParent.height; y += cellSize) {
+        //create a div and place in the grid
+        let cell = document.createElement("div");
+        cell.style.position = "absolute";
+        cell.style.left = x + "px";
+        cell.style.top = y + "px";
+        cell.style.width = cellSize + "px";
+        cell.style.height = cellSize + "px";
+        cell.style.background = "rgba(200, 200, 200, 0.3)";
+
+        parentCanvas.appendChild(cell);
+      }
+    }
   }
   /****************ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE HERE */
@@ -112,45 +136,45 @@ function setup_D() {
    * **/
   function aniD(parentCanvas) {
     console.log("in ani-D -teamD");
-   parentCanvas.style.position = "relative";
-   let ellipses = [];
+    parentCanvas.style.position = "relative";
+    let ellipses = [];
 
-   for (let i = 0; i < 10; i++) {
-    ellipses.push({
-      x: Math.random() * (parentCanvas.clientWidth - 50),
-      y: Math.random() * (parentCanvas.clientHeight - 50),
-      speed: 1 + Math.random() * 2
-    });
-  }
+    for (let i = 0; i < 10; i++) {
+      ellipses.push({
+        x: Math.random() * (parentCanvas.clientWidth - 50),
+        y: Math.random() * (parentCanvas.clientHeight - 50),
+        speed: 1 + Math.random() * 2
+      });
+    }
 
-   function animate() {
-     //clear the canvas
-     parentCanvas.innerHTML = "";
-     //create a new div to represent the ellipse
+    function animate() {
+      //clear the canvas
+      parentCanvas.innerHTML = "";
+      //create a new div to represent the ellipse
       ellipses.forEach((ellipse) => {
-     let ellipseDiv = document.createElement("div");
-     ellipseDiv.style.position = "absolute";
-     ellipseDiv.style.width = "50px";
-     ellipseDiv.style.height = "50px";
-     ellipseDiv.style.borderRadius = "50%";
-     ellipseDiv.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-     ellipseDiv.style.left = ellipse.x + "px";
-     ellipseDiv.style.top = ellipse.y + "px";
-     parentCanvas.appendChild(ellipseDiv);
+        let ellipseDiv = document.createElement("div");
+        ellipseDiv.style.position = "absolute";
+        ellipseDiv.style.width = "50px";
+        ellipseDiv.style.height = "50px";
+        ellipseDiv.style.borderRadius = "50%";
+        ellipseDiv.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        ellipseDiv.style.left = ellipse.x + "px";
+        ellipseDiv.style.top = ellipse.y + "px";
+        parentCanvas.appendChild(ellipseDiv);
 
-     //update position for next frame
-      ellipse.x += ellipse.speed;
+        //update position for next frame
+        ellipse.x += ellipse.speed;
 
-      if  (ellipse.x + 50 > parentCanvas.clientWidth) {
-        ellipse.x = 0; // reset off screen
-      }
-    });
+        if (ellipse.x + 50 > parentCanvas.clientWidth) {
+          ellipse.x = 0; // reset off screen
+        }
+      });
 
-     //request next frame
-     requestAnimationFrame(animate);
-   }
+      //request next frame
+      requestAnimationFrame(animate);
+    }
 
-   //start the animation
-   animate(); 
+    //start the animation
+    animate();
   }
 }
