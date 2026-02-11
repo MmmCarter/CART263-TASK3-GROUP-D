@@ -158,7 +158,12 @@ function setup_D() {
         // prevent page scrolling
         e.preventDefault();
 
-        //if not generating yet, satrt interval
+        //press = 1 block
+        if (!e.repeat) {
+          createBlock();
+        }
+
+        //satrt countinuous generation
         if (!spawnInterval) {
           spawnInterval = setInterval(createBlock, 120);
         }
@@ -174,8 +179,15 @@ function setup_D() {
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
       console.log(e);
-      console.log("d-up");
+      console.log("d-up", e.code);
+
+      //stop generating blocks when we release space
+      if (e.code === "Space") {
+        clearInterval(spawnInterval);
+        spawnInterval = null;
+      }
     };
+
     //DO NOT REMOVE
     window.addEventListener("keydown", windowKeyDownRef);
     window.addEventListener("keyup", windowKeyUpRef);
