@@ -25,15 +25,105 @@ function setup_D() {
   function aniA(parentCanvas) {
     console.log("in ani-A -teamD");
     const canvas = document.getElementById(parentCanvas);
-
     canvas.innerHTML = "";
-
     canvas.style.position = "relative";
     canvas.style.width = "100%";
-    canvas.style.height = "300px";
-    canvas.style.background = "#111";
+    canvas.style.height = "320px";
     canvas.style.overflow = "hidden";
-  }
+    canvas.style.background = "#6ecbff";
+
+    const grass = document.createElement("div");
+    grass.className = "TEAM_D_ANI_A_GRASS";
+    grass.style.position = "absolute";
+    grass.style.bottom = "0";
+    grass.style.left = "0";
+    grass.style.width = "100%";
+    grass.style.height = "90px";
+    grass.style.background = "#2ea44f";
+    canvas.appendChild(grass);
+
+    const sun = document.createElement("div");
+    sun.className = "TEAM_D_ANI_A_SUN";
+    sun.style.position = "absolute";
+    sun.style.top = "25px";
+    sun.style.right = "40px";
+    sun.style.width = "70px";
+    sun.style.height = "70px";
+    sun.style.borderRadius = "50%";
+      sun.style.background = "yellow";
+    sun.style.boxShadow = "0 0 20px yellow";
+    canvas.appendChild(sun);
+
+    const moon = document.createElement("div");
+    moon.className = "TEAM_D_ANI_A_MOON";
+    moon.style.position = "absolute";
+    moon.style.top = "25px";
+    moon.style.right = "40px";
+    moon.style.width = "60px";
+    moon.style.height = "60px";
+    moon.style.borderRadius = "50%";
+    moon.style.background = "#e6e6e6";
+    moon.style.boxShadow = "0 0 15px #e6e6e6";
+    moon.style.display = "none";
+    canvas.appendChild(moon);
+
+    const text = document.createElement("div");
+    text.className = "TEAM_D_ANI_A_TEXT";
+    text.innerText = "what a sunny day";
+    text.style.position = "absolute";
+    text.style.top = "20px";
+    text.style.left = "20px";
+    text.style.fontSize = "20px";
+    text.style.fontFamily = "Arial, sans-serif";
+    text.style.color = "white";
+    text.style.textShadow = "1px 1px 2px black";
+    canvas.appendChild(text);
+
+    const treePositions = [10, 30, 55, 75, 90];
+
+  treePositions.forEach((pos) => {
+    const trunk = document.createElement("div");
+    trunk.className = "TEAM_D_ANI_A_TRUNK";
+    trunk.style.position = "absolute";
+    trunk.style.bottom = "90px";
+    trunk.style.left = pos + "%";
+    trunk.style.width = "18px";
+    trunk.style.height = "90px";
+    trunk.style.background = "#8b5a2b";
+    canvas.appendChild(trunk);
+
+    const leaves = document.createElement("div");
+    leaves.className = "TEAM_D_ANI_A_LEAVES";
+    leaves.style.position = "absolute";
+    leaves.style.bottom = "150px";
+    leaves.style.left = pos - 2 + "%";
+    leaves.style.width = "70px";
+    leaves.style.height = "70px";
+    leaves.style.borderRadius = "50%";
+    leaves.style.background = "#1f8f4a";
+    canvas.appendChild(leaves);
+  });
+
+  let isDay = true;
+
+  canvas.addEventListener("click", function (event) {
+    if (event.button !== 0) return;
+
+    isDay = !isDay;
+
+    if (isDay) {
+      canvas.style.background = "#6ecbff";
+      sun.style.display = "block";
+      moon.style.display = "none";
+      text.innerText = "what a sunny day";
+    } else {
+      canvas.style.background = "#0b1b3d";
+      sun.style.display = "none";
+      moon.style.display = "block";
+      text.innerText = "a calm night";
+    }
+  });
+}
 
   /****************ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN B INSIDE HERE */
