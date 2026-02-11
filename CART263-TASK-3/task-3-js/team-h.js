@@ -275,11 +275,11 @@ function setup_H() {
         ellipse.setAttribute("ani-dir", "1");
         ellipse.setAttribute("ani-go", "false");
         arrayOfellipses.push(ellipse);
-        setTimeout(function(){ellipse.setAttribute("ani-go","true")},Math.random()*5000)
+        setTimeout(function () { ellipse.setAttribute("ani-go", "true") }, Math.random() * 5000)
       }
     }
 
-  requestAnimationFrame(animate)
+    requestAnimationFrame(animate)
 
 
     /****** callback for requestAnimationFrame **********/
