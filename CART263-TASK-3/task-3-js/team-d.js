@@ -119,6 +119,34 @@ function setup_D() {
   function aniC(parentCanvas) {
     console.log("in ani-C -teamD");
 
+    //set background color  of canvas
+    parentCanvas.style.backgroundColor = "rgb(30, 30, 40)";
+
+    //control whether the pattern generation is ongoing or not
+    let spawnInterval = null;
+
+    //create random color blocks
+    function createBlock() {
+      const block = document.createElement("div");
+
+      // random position
+      const x = Math.random() * parentCanvas.clientWidth;
+      const y = Math.random() * parentCanvas.clientHeight;
+
+      //hue
+      const hue = Math.floor(Math.random() * 360);
+
+      block.style.position = "absolute";
+      block.style.left = x + "px";
+      block.style.top = y + "px";
+      block.style.width = "30px";
+      block.style.height = "30px";
+      block.style.background = `hsl(${hue}, 80%, 60%)`;
+      block.style.opacity = "0.9";
+
+      parentCanvas.appendChild(block);
+    }
+
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
       //code for key down in here
