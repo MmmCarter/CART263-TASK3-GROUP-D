@@ -23,8 +23,12 @@ function setup_D() {
    * **/
 
   function aniA(parentCanvas) {
-    console.log("in ani-A -teamD");
-    const canvas = document.getElementById(parentCanvas);
+    const canvas = (typeof parentCanvas === "string") 
+        ? document.getElementById(parentCanvas) 
+        : parentCanvas;
+
+    if (!canvas) return;
+
     canvas.innerHTML = "";
     canvas.style.position = "relative";
     canvas.style.width = "100%";
@@ -50,7 +54,7 @@ function setup_D() {
     sun.style.width = "70px";
     sun.style.height = "70px";
     sun.style.borderRadius = "50%";
-      sun.style.background = "yellow";
+    sun.style.background = "yellow";
     sun.style.boxShadow = "0 0 20px yellow";
     canvas.appendChild(sun);
 
@@ -81,48 +85,48 @@ function setup_D() {
 
     const treePositions = [10, 30, 55, 75, 90];
 
-  treePositions.forEach((pos) => {
-    const trunk = document.createElement("div");
-    trunk.className = "TEAM_D_ANI_A_TRUNK";
-    trunk.style.position = "absolute";
-    trunk.style.bottom = "90px";
-    trunk.style.left = pos + "%";
-    trunk.style.width = "18px";
-    trunk.style.height = "90px";
-    trunk.style.background = "#8b5a2b";
-    canvas.appendChild(trunk);
+    treePositions.forEach((pos) => {
+        const trunk = document.createElement("div");
+        trunk.className = "TEAM_D_ANI_A_TRUNK";
+        trunk.style.position = "absolute";
+        trunk.style.bottom = "90px";
+        trunk.style.left = pos + "%";
+        trunk.style.width = "18px";
+        trunk.style.height = "90px";
+        trunk.style.background = "#8b5a2b";
+        trunk.style.transform = "translateX(-50%)";
+        canvas.appendChild(trunk);
 
-    const leaves = document.createElement("div");
-    leaves.className = "TEAM_D_ANI_A_LEAVES";
-    leaves.style.position = "absolute";
-    leaves.style.bottom = "150px";
-    leaves.style.left = pos - 2 + "%";
-    leaves.style.width = "70px";
-    leaves.style.height = "70px";
-    leaves.style.borderRadius = "50%";
-    leaves.style.background = "#1f8f4a";
-    canvas.appendChild(leaves);
-  });
+        const leaves = document.createElement("div");
+        leaves.className = "TEAM_D_ANI_A_LEAVES";
+        leaves.style.position = "absolute";
+        leaves.style.bottom = "150px";
+        leaves.style.left = pos + "%";
+        leaves.style.width = "70px";
+        leaves.style.height = "70px";
+        leaves.style.borderRadius = "50%";
+        leaves.style.background = "#1f8f4a";
+        leaves.style.transform = "translateX(-50%)";
+        canvas.appendChild(leaves);
+    });
 
-  let isDay = true;
+    let isDay = true;
 
-  canvas.addEventListener("click", function (event) {
-    if (event.button !== 0) return;
-
-    isDay = !isDay;
-
-    if (isDay) {
-      canvas.style.background = "#6ecbff";
-      sun.style.display = "block";
-      moon.style.display = "none";
-      text.innerText = "what a sunny day";
-    } else {
-      canvas.style.background = "#0b1b3d";
-      sun.style.display = "none";
-      moon.style.display = "block";
-      text.innerText = "a calm night";
-    }
-  });
+    canvas.addEventListener("click", function (event) {
+        if (event.button !== 0) return;
+        isDay = !isDay;
+        if (isDay) {
+            canvas.style.background = "#6ecbff";
+            sun.style.display = "block";
+            moon.style.display = "none";
+            text.innerText = "what a sunny day";
+        } else {
+            canvas.style.background = "#0b1b3d";
+            sun.style.display = "none";
+            moon.style.display = "block";
+            text.innerText = "a calm night";
+        }
+    });
 }
 
   /****************ANI B ************************************ */
